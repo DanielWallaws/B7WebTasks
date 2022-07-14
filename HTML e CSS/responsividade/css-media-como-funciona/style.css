@@ -1,0 +1,32 @@
+body {
+    background-color: rgb(255, 144, 144);
+}
+
+@media (min-width: 1000px) {
+    body {
+        background-color: #2200e0;
+    }
+}
+
+@media (min-width: 700px) and (max-width: 900px) {
+    body {
+        background-color: #b866df;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 699px) {
+    body {
+        background-color: #fffb00;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        background-color: #c23e3e;
+    }
+    
+    h1 {
+        font-size: 15px;;
+    }
+}
+
