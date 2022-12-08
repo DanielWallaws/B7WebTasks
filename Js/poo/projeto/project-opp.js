@@ -14,7 +14,15 @@ class Form {
 
     render() {
         let formElement = document.createElement('form');
-        formElement.setAttribute('method', this.method)
+        formElement.setAttribute('method', this.method);
+        formElement.setAttribute('action', this.action);
+
+        for(let i in this.items) [
+            this.items[i].render(formElement)
+        ]
+
+        this.container.appendChild(formElement);
+
     }
 }
 
@@ -42,6 +50,15 @@ class Input {
             throw new Error(`Input "${t}" type doens't exist`)
         }
     }
+    render(formElement) {
+        let el = document.createElement('input');
+        el.type = this.type;
+        el.name = this.name;
+        el.placeholder = this.label;
+        el.required = this.required;
+        formElement.appendChild(el);
+
+    }
 
 
 }
@@ -55,7 +72,7 @@ class Button extends Input {
 //DEPLOYMENT
 
 //Form
-let form = new Form('formArea', 'POST', 'htts://google.com.br' )
+let form = new Form('.formArea', 'POST', 'htts://google.com.br' )
 
 //Email
 let email = new Input('email', 'Digite seu email');
@@ -70,10 +87,14 @@ password.required = true;
 form.addItem(password);
 
 //Button
-let button = new Button('Enviar')
+let button = new Button('Enviar');
 form.addItem(button);
 
-console.log(form.items);
+form.render();
+
+//console.log(form.items);
+
+
 
 
 
