@@ -67,6 +67,12 @@ class Button extends Input {
         super('', label)
         this.type = 'submit'
     }
+    render(formElement) {
+        let el = document.createElement('input');
+        el.type = this.type;
+        el.value = this.label;
+        formElement.appendChild(el)
+    }
 }
 
 //DEPLOYMENT
