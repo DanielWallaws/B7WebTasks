@@ -7,9 +7,14 @@ let lista = [
     {id: '3' ,nome: 'Fulano', sobrenome: 'Da Silva'}
 ]
 
-let pessoa = lista.find(function(item){
-    return (item.sobrenome == 'XYZ')? true : false;
+let pessoa = lista.findIndex(function(item){
+    return (item.sobrenome == 'XYZ')? true : false;//O '.find' encontra o item do array e return ele todo, o '.findeIndex' retorna somente o que foi pedito do item
 });
+
+// let pessoa = lista.find(function(item){ //O '.find' encontra o item do array e return ele todo, o '.findeIndex' retorna somente o que foi pedito do item
+//     return (item.sobrenome == 'XYZ')
+// });
+
 
 let res = pessoa;
 
@@ -57,7 +62,7 @@ console.log(res);
     
 // })
 
-// lista2 = lista.findIndex(function(item) {
+// lista2 = lista.findIndex(function(item) { //O '.find' encontra o item do array e return ele todo, o '.findeIndex' retorna somente o que foi pedito do item
     
 //     return (item == 16)? true : false;
     
