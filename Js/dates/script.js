@@ -61,6 +61,12 @@
 // console.log(newValue);  //
 
 
-let newValue = Date.now(); // Retona time stump só que nesse caso sem precisar declarar objeto e etc. É do padrão ECMAScript 6
+// let newValue = Date.now(); // Retona time stump só que nesse caso sem precisar declarar objeto e etc. É do padrão ECMAScript 6
 
-console.log(newValue);  //
+// console.log(newValue);  //
+
+let date = new Date(); 
+
+date.setFullYear(2022);
+
+console.log(date);  //
