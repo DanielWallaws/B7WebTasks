@@ -15,3 +15,5 @@ btnSubmit.addEventListener('click', (e)=> {
         window.alert('Logou')
     }
 })
+
+const inputUser = document.querySelector('.user-input');

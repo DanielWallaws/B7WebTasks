@@ -5,7 +5,7 @@
 }
 body {
     /* overflow: hidden; */
-    background-color: #757575;
+    background-color: #b9b9b9;
 }
 h1 {
     display: flex;
@@ -46,19 +46,17 @@ h1 {
     border-right: transparent;
     border-bottom: 3px solid green;
 }
-.user-input:hover {
+.user-input:hover,  .user-input:focus, .password-input:hover, .password-input:focus{
     border-bottom: 3px solid rgb(0, 0, 0);
     border-top: transparent;
     border-left: transparent;
     border-right: transparent;
-    transition:all ease .3s;;
-}
-user-input:focus{
-    box-shadow: 0 0 0 0;
-    border: 0 none;
+    transition:all ease .3s;
     outline: 0;
-} 
-
+}
+.user-input:placeholder {
+    background-color: red;
+}
 .password-input {
     margin-bottom: 10%;
     border-top: transparent;
@@ -66,13 +64,6 @@ user-input:focus{
     border-right: transparent;
     border-bottom: 3px solid green;
 
-}
-.password-input:hover{
-    border-bottom: 3px solid rgb(0, 0, 0);
-    border-top: transparent;
-    border-left: transparent;
-    border-right: transparent;
-    transition:all ease .3s;;
 }
 .btn-submit {
     height: 30px;
