@@ -30,6 +30,7 @@ function renderForm() {
 
             if (userName == false || password == false) {
                 reject('Falta usuário ou senha')
+                console.error('Insira usuário e senha e tente novamente')
             } else {
                 resolve(valueLogin)
                 console.log(valueLogin);

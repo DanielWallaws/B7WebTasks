@@ -31,17 +31,17 @@
 // console.log(newValue);  //
 
 // let date = new Date(); 
-// let newValue = date.getDate(); // Retonna o dia no mês. 
+// let newValue = date.getDate(); // Retorna o dia no mês. 
 
 // console.log(newValue);  //
 
 // let date = new Date(); 
-// let newValue = date.getHours(); // Retonna a hora. 
+// let newValue = date.getHours(); // Retorna a hora. 
 
 // console.log(newValue);  //
 
 // let date = new Date(); 
-// let newValue = date.getMinutes(); // Retonna os minutos 
+// let newValue = date.getMinutes(); // Retorna os minutos 
 
 // console.log(newValue);  //
 
@@ -65,8 +65,24 @@
 
 // console.log(newValue);  //
 
+// let date = new Date(); 
+
+// date.setMonth(10); //Seta mes para novembro 
+
+// let newValue = date;
+// console.log(newValue);  //
+
+// let date = new Date(); 
+
+// date.setDate(date.getDate() + 5) //Seta o dia para 5 dias a frente
+
+// let newValue = date;
+// console.log(newValue);  //
+
 let date = new Date(); 
 
-date.setFullYear(2022);
+date.setDate(date.getDate() + 90) //Seta o dia para 90 dias a frente (nesse caso o próprio JS automáticamente o mês e o dia da semana)
+                                    // Esse Parâmentro pode ser utilizado para os intens da data.
 
-console.log(date);  //
+let newValue = date;
+console.log(newValue); 
