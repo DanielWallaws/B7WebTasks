@@ -1,60 +1,42 @@
 
-setTimeout(() => {
-    const form = document.querySelector('.form-container');
-    const body = document.querySelector('body');
-    renderForm;
-
-    if(form.style.opacity == 0) {
+function renderForm() {
+    return new Promise(function(resolve, reject) {
+        setTimeout(() => {
+            const form = document.querySelector('.form-container');
+            const body = document.querySelector('body');
         
-        form.style.opacity = 200;
-        body.style.backgroundColor = 'rgb(212, 212, 212)';
+            if(form.style.opacity == 0) {
+                
+                form.style.opacity = 200;
+                body.style.backgroundColor = 'rgb(212, 212, 212)';
+            } 
         
-        return renderForm = true;   
+        }, 1200);
 
-    } else {
-        
-        return renderForm = false;
+        const btnSubmit = document.querySelector('.btn-submit');
 
-    }
-    
-}, 1500);
+        btnSubmit.addEventListener('click', (e)=> {
+            e.preventDefault()
 
-this.renderForm = true;   
+            //Desafio 2: construir um Regex para o email e para a senha
 
-console.log(this.renderForm);
+            const userName = document.getElementsByClassName('user-input')[0].value;
+            const password = document.getElementsByClassName('password-input')[0].value;
 
-class LoginValues {
-    constructor(user, password) {
-        this.valueUser = user;
-        this.valuePassword =  password;
-    }
+            let valueLogin = {
+                valueUser: userName,
+                valuePassword: password
+            };
 
+            if (userName == false || password == false) {
+                reject('Falta usuário ou senha')
+            } else {
+                resolve(valueLogin)
+                console.log(valueLogin);
+            }
+
+        })
+    })
 }
-const userName = document.getElementsByClassName('user-input')[0].value;
-const password = document.getElementsByClassName('password-input')[0].value;
-const btnSubmit = document.querySelector('.btn-submit');
 
-
-
-
-btnSubmit.addEventListener('click', (e)=> {
-    e.preventDefault()
-
-    if(this.renderForm == true) {
-        /// Parei aqui para resolver a charada
-        if(userName !== '' && password !== '') {
-            console.log('Entrou no if da classe')
-            let valuesLogin = new LoginValues(userName, password);
-            console.log(valuesLogin)
-        }
-    }
-
-    let promisseLogin = new Promise(function(myResolve, myReject){
-        myResolve(valuesLogin == true);
-        myReject(valuesLogin == false);
-    });
-    promisseLogin.then(
-        function(value) {console.log('Logou')},
-        function(error) {console.error('Não logou')}
-    )
-})
+renderForm();
