@@ -1,6 +1,6 @@
 function sayMyName(name = '') {
     if(name === '') {
-        throw 'Nome é obrigatório' //
+        throw 'Nome é obrigatório' //É um tratamento básico de erro. O certo é trabalhar juntamente com o 'try catch'
     }
 
     console.log('Deopis do erro')
