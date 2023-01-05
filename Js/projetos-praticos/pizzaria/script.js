@@ -83,11 +83,10 @@ selectAll('.pizzaInfo--size').forEach((size, sizeIndex)=> {
 select('.pizzaInfo--addButton').addEventListener('click', ()=> {
     let size = select('.pizzaInfo--size.selected').getAttribute('data-key');
     
-    let identifier = pizzaJson[modalKey].id + '@' + size;
-
-    let key = cart.findIndex((item)=> item.identifier == identifier);
-
-    console.log(key)
+    // Variável que armazena um identificador criado pra verficar posteriormente se o que vai se adicionado ao carrinho já possui um padrão igual adicionado, 
+    //para que se possa somente adicionar mais quantidade e não criar novo item.
+    let identifier = pizzaJson[modalKey].id + '@' + size; 
+    let key = cart.findIndex((item)=> item.identifier == identifier); //Aqui a verificação
 
     if(key > -1) {
         cart[key].qt += modalQt;
@@ -99,7 +98,86 @@ select('.pizzaInfo--addButton').addEventListener('click', ()=> {
             qt: modalQt
         })
     }
-    console.log(cart)
-    
+
+    updateCart();
     closeModal();
 })
+
+select('.menu-openner').addEventListener('click', ()=> {
+    if(cart.length > 0) {
+        select('aside').style.left = '0';
+    }
+})
+
+select('.menu-closer').addEventListener('click',()=> {
+    select('aside').style.left = '100vw';
+});
+
+function updateCart() {
+    if(cart.length > 0) {
+        select('.menu-openner').innerHTML = cart.length;
+
+        select('aside').classList.add('show');
+
+        select('.cart').innerHTML = '';
+
+        let subtotal = 0;
+        let discount = 0;
+        let total = 0;
+
+        for(let i in cart) {
+            let pizzaItem = pizzaJson.find((item) => item.id == cart[i].id);
+            let cartItem = select('.models .cart--item').cloneNode(true); //Esse método se true clona o nó selecionado.
+           
+            subtotal += pizzaItem.price*cart[i].qt;
+
+            let pizzaSizeName;
+
+            switch(cart[i].size) {
+                case 0:
+                    pizzaSizeName = 'P'
+                    break;
+                case 1:
+                    pizzaSizeName = 'M'
+                    break;
+                case 2:
+                    pizzaSizeName = 'G'
+                    break;
+            }
+
+            let pizzaName = `${pizzaItem.name} (${pizzaSizeName})`;
+
+            cartItem.querySelector('img').src = pizzaItem.img;
+            cartItem.querySelector('.cart--item-nome').innerHTML = pizzaName;
+            cartItem.querySelector('.cart--item--qt').innerHTML = cart[i].qt;
+            
+            cartItem.querySelector('.cart--item-qtmenos').addEventListener('click', ()=> {
+                if(cart[i].qt > 1) {
+                    cart[i].qt--;
+                    updateCart();
+                } else {
+                    cart.splice(i, 1);
+                }
+                updateCart();
+            })
+
+            cartItem.querySelector('.cart--item-qtmais').addEventListener('click', ()=> {
+                cart[i].qt++;
+                updateCart();
+            })
+
+            select('.cart').append(cartItem);
+        }
+        discount = subtotal*0.1;
+
+        total = subtotal - discount;
+
+        select('.subtotal span:last-child').innerHTML = `R$ ${subtotal.toFixed(2)}`;
+        select('.desconto span:last-child').innerHTML = `R$ ${discount.toFixed(2)}`;
+        select('.total span:last-child').innerHTML = `R$ ${total.toFixed(2)}`;
+
+    } else {
+        select('aside').classList.remove('show');
+        select('aside').style.left = '100vw'
+    }
+}
