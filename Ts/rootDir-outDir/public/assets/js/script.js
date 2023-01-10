@@ -1,5 +1,5 @@
 "use strict";
-const nome = 'Bonieky';
+var nome = 'Bonieky';
 function teste(num1) {
     return 'O parametro era' + num1;
 }
